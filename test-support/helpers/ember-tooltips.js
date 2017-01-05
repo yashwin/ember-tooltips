@@ -115,7 +115,23 @@ function getTooltipAndTargetPosition(options = {}) {
 }
 
 export function triggerTooltipTargetEvent(event, options = {}) {
-  const $target = getTooltipTargetFromBody(options.targetSelector);
+
+  let $target;
+
+  /* Check if an element is being passed (deprecated)
+  and, if so, show a warning but let the format of passed
+  options still work correctly. */
+
+  if (typeof event !== 'string' && event.jquery) {
+    Ember.warn('You no longer need to pass an jQuery element as the first param to triggerTooltipTargetEvent(). Just pass the event name as the only param. If you need to specify a target using a selector you can pass an optoins hash as the second param with a targetSelector property. This will throw an error in ember-tooltips 3.0.0');
+
+    $target = event;
+    event = options;
+    options = arguments[2] || {};
+    $target = $(options.selector);
+  } else {
+    $target = getTooltipTargetFromBody(options.targetSelector);
+  }
 
   // TODO why do we allow focusin? why not just focus?
   const approvedEventTypes = ['mouseenter', 'mouseleave', 'click', 'focus', 'focusin', 'blur'];
