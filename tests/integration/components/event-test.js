@@ -16,11 +16,11 @@ test('tooltip-on-element toggles with hover', function(assert) {
 
   assertTooltipNotVisible(assert);
 
-  triggerTooltipTargetEvent($tooltipTarget, 'mouseenter');
+  triggerTooltipTargetEvent('mouseenter');
 
   assertTooltipVisible(assert);
 
-  triggerTooltipTargetEvent($tooltipTarget, 'mouseleave');
+  triggerTooltipTargetEvent('mouseleave');
 
   assertTooltipNotVisible(assert);
 
@@ -36,11 +36,11 @@ test('tooltip-on-element toggles with click', function(assert) {
 
   assertTooltipNotVisible(assert);
 
-  triggerTooltipTargetEvent($tooltipTarget, 'click');
+  triggerTooltipTargetEvent('click');
 
   assertTooltipVisible(assert);
 
-  triggerTooltipTargetEvent($tooltipTarget, 'click');
+  triggerTooltipTargetEvent('click');
 
   assertTooltipNotVisible(assert);
 
@@ -56,11 +56,11 @@ test('tooltip-on-element toggles with focus', function(assert) {
 
   assertTooltipNotVisible(assert);
 
-  triggerTooltipTargetEvent($tooltipTarget, 'focus');
+  triggerTooltipTargetEvent('focus');
 
   assertTooltipVisible(assert);
 
-  triggerTooltipTargetEvent($tooltipTarget, 'blur');
+  triggerTooltipTargetEvent('blur');
 
   assertTooltipNotVisible(assert);
 
@@ -78,19 +78,19 @@ test('tooltip-on-element does not show when event=none', function(assert) {
 
   /* Check focus */
 
-  triggerTooltipTargetEvent($tooltipTarget, 'focus');
+  triggerTooltipTargetEvent('focus');
 
   assertTooltipNotVisible(assert);
 
   /* Check hover */
 
-  triggerTooltipTargetEvent($tooltipTarget, 'mouseenter');
+  triggerTooltipTargetEvent('mouseenter');
 
   assertTooltipNotVisible(assert);
 
   /* Check click */
 
-  triggerTooltipTargetEvent($tooltipTarget, 'click');
+  triggerTooltipTargetEvent('click');
 
   assertTooltipNotVisible(assert);
 

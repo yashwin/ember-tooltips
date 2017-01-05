@@ -34,6 +34,8 @@ determining whether a tooltip is the correct distance from
 the target on the given side.
 */
 
+/* TODO() This file isn't being linted */
+
 function getPositionDifferences(options = {}) {
   const { targetPosition, tooltipPosition } = getTooltipAndTargetPosition(options);
   const { side } = options;
@@ -112,37 +114,29 @@ function getTooltipAndTargetPosition(options = {}) {
   };
 }
 
-/* TODO(Duncan):
-
-Update triggerTooltipTargetEvent() to use getTooltipTargetFromBody
-and change type to side and move side into the options hash */
-
-export function triggerTooltipTargetEvent($element, type, options={}) {
+export function triggerTooltipTargetEvent(event, options = {}) {
+  const $target = getTooltipTargetFromBody(options.targetSelector);
 
   // TODO why do we allow focusin? why not just focus?
   const approvedEventTypes = ['mouseenter', 'mouseleave', 'click', 'focus', 'focusin', 'blur'];
-  if (approvedEventTypes.indexOf(type) == -1) {
-    throw Error(`only ${approvedEventTypes.join(', ')} will trigger a tooltip event. You used ${type}.`);
+  if (approvedEventTypes.indexOf(event) == -1) {
+    throw Error(`only ${approvedEventTypes.join(', ')} will trigger a tooltip event. You used ${event}.`);
   }
 
   let wasEventTriggered = false;
-
-  if (options.selector) {
-    $element = $element.find(options.selector);
-  }
 
   // we need to need to wrap any code with asynchronous side-effects in a run
   // $tooltipTarget.trigger('someEvent') has asynchronous side-effects
   run(() => {
     // if the $tooltip is hidden then the user can't interact with it
-    if ($element.attr('aria-hidden') === 'true') {
+    if ($target.attr('aria-hidden') === 'true') {
       return;
     }
-    if (type === 'focus' || type === 'blur') {
+    if (event === 'focus' || event === 'blur') {
       // we don't know why but this is necessary when type is 'focus' or 'blur'
-      $element[0].dispatchEvent(new window.Event(type));
+      $target[0].dispatchEvent(new window.Event(event));
     } else {
-      $element.trigger(type);
+      $target.trigger(event);
     }
 
     wasEventTriggered = true;
