@@ -12,8 +12,6 @@ test('tooltip-on-element toggles with hover', function(assert) {
 
   this.render(hbs`{{tooltip-on-element}}`);
 
-  const $tooltipTarget = this.$();
-
   assertTooltipNotVisible(assert);
 
   triggerTooltipTargetEvent('mouseenter');
@@ -31,8 +29,6 @@ test('tooltip-on-element toggles with click', function(assert) {
   assert.expect(3);
 
   this.render(hbs`{{tooltip-on-element event='click'}}`);
-
-  const $tooltipTarget = this.$();
 
   assertTooltipNotVisible(assert);
 
@@ -52,8 +48,6 @@ test('tooltip-on-element toggles with focus', function(assert) {
 
   this.render(hbs`{{tooltip-on-element event='focus'}}`);
 
-  const $tooltipTarget = this.$();
-
   assertTooltipNotVisible(assert);
 
   triggerTooltipTargetEvent('focus');
@@ -71,8 +65,6 @@ test('tooltip-on-element does not show when event=none', function(assert) {
   assert.expect(4);
 
   this.render(hbs`{{tooltip-on-element event='none'}}`);
-
-  const $tooltipTarget = this.$();
 
   assertTooltipNotVisible(assert);
 
