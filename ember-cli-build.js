@@ -8,7 +8,7 @@ module.exports = function(defaults) {
     snippetSearchPaths: ['app', 'tests'],
 
     sassOptions: {
-      extension: 'scss',
+      extension: 'sass',
     },
 
     postcssOptions: {
