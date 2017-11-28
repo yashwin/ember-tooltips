@@ -1,9 +1,9 @@
-.ember-tooltip, .ember-popover
+.ember-tooltip,
+.ember-popover
   -webkit-touch-callout: none
   -webkit-user-select: none
   user-select: none
   pointer-events: none
-
   font-size: 14px
   font-family: inherit
   border-radius: 3px
@@ -26,8 +26,10 @@
   padding: 6px 10px
   color: #fff
   background: #3a3c47
-  text-shadow: -1px -1px 0 rgba(0,0,0,0.2)
-  white-space: normal // IE doesnt support initial so fall back to normal
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2)
+  white-space: normal
+
+  // IE doesnt support initial so fall back to normal
   white-space: initial
 
   &:after
@@ -85,9 +87,10 @@
   &.ember-tooltip-or-popover-target-attached-right-bottom:after
     top: 15px
 
-/* Fade */
+/* Fade
 
-.ember-tooltip, .ember-popover
+.ember-tooltip,
+.ember-popover
   opacity: 0
 
   &.ember-tooltip-or-popover-slide,
@@ -110,7 +113,9 @@
 
   &[aria-hidden="false"]
     opacity: 1
-    transition-duration: 100ms // Shorter hide duration
+    transition-duration: 100ms
+
+    // Shorter hide duration
 
     &.ember-tooltip-or-popover-slide
       margin: 0px
